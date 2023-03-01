@@ -1,0 +1,10 @@
+node_modules
+/destination
+tsconfig.tsbuildinfo
+.env
+coverage
+yarn-error.log
+.husky
+bundle-analyzes
+storybook
+tsconfig.noemit.tsbuildinfo
