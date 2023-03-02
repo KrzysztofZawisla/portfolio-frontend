@@ -10,7 +10,7 @@ type ScriptsKeysAsArray = ScriptsKeysNotTypedObject[];
 const scriptsKeysAsArray: ScriptsKeysAsArray = Object.keys(scripts).map(
   (key: string): ScriptsKeysNotTypedObject => {
     return { [key]: key };
-  }
+  },
 );
 
 const scriptsKeys: ScriptsKeys = Object.assign({}, ...scriptsKeysAsArray);
