@@ -1,6 +1,8 @@
-import { join, resolve } from "path";
+import { join } from "path";
 import source from "~frontend/source/scripts/build/constants/source/source";
 import getBabelLoader from "~frontend/source/scripts/build/loaders/get-babel-loader/get-babel-loader";
+import getCacheLoader from "~frontend/source/scripts/build/loaders/get-cache-loader/get-cache-loader";
+import getTSLoader from "~frontend/source/scripts/build/loaders/get-ts-loader/get-ts-loader";
 import Mode from "~frontend/source/scripts/build/types/mode/mode";
 
 type GetTypeScriptLoaderArguments = {
@@ -21,12 +23,7 @@ const getTypeScriptLoader = ({
       join(process.cwd(), "..", "backend"),
     ],
     use: [
-      {
-        loader: "cache-loader",
-        options: {
-          cacheDirectory: resolve(".webpackCache"),
-        },
-      },
+      getCacheLoader(),
       {
         loader:
           mode === Mode.Development && withESBuild
@@ -43,12 +40,7 @@ const getTypeScriptLoader = ({
                 mode,
               }),
       },
-      {
-        loader: "ts-loader",
-        options: {
-          configFile: join(process.cwd(), "tsconfig.json"),
-        },
-      },
+      getTSLoader(),
     ],
   };
 };
