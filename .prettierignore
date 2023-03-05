@@ -6,4 +6,4 @@ android/
 bundle-analyzes/
 coverage/
 ios/
-Footer
+.webpackCache/

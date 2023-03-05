@@ -17,13 +17,17 @@ const config: Linter.Config = {
     "plugin:jsx-a11y/recommended",
     "prettier",
     "plugin:sonarjs/recommended",
+    "plugin:node/recommended",
+    "plugin:markdown/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
+    tsconfigRootDir: __dirname,
+    ecmaVersion: "latest",
+    project: "./tsconfig.json",
     sourceType: "module",
   },
   plugins: [
@@ -35,6 +39,11 @@ const config: Linter.Config = {
     "jest",
     "prettier",
     "sonarjs",
+    "@emotion",
+    "deprecation",
+    "html",
+    "markdown",
+    "@html-eslint",
   ],
   settings: {
     react: {
@@ -73,13 +82,39 @@ const config: Linter.Config = {
     "no-console": "warn",
     "react-hooks/exhaustive-deps": "off",
     "no-nested-ternary": "off",
+    "deprecation/deprecation": "warn",
+    "node/no-unsupported-features/es-syntax": "off",
+    "node/no-missing-require": "off",
+    "node/no-missing-import": "off",
+    "node/no-extraneous-import": "off",
+    "node/no-unsupported-features/es-builtins": "off",
   },
   overrides: [
+    {
+      files: ["*.json", "*.js"],
+      parserOptions: {
+        project: null,
+      },
+      rules: {
+        "deprecation/deprecation": "off",
+      },
+    },
     {
       files: ["*.js"],
       rules: {
         "@typescript-eslint/no-var-requires": "off",
       },
+    },
+    {
+      files: ["*.json"],
+      rules: {
+        "sonarjs/no-duplicate-string": "off",
+      },
+    },
+    {
+      files: ["*.html", "*.htm"],
+      parser: "@html-eslint/parser",
+      extends: ["plugin:@html-eslint/recommended"],
     },
   ],
 };
