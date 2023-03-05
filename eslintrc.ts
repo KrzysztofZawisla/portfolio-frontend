@@ -19,6 +19,7 @@ const config: Linter.Config = {
     "plugin:sonarjs/recommended",
     "plugin:node/recommended",
     "plugin:markdown/recommended",
+    "plugin:json/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -44,6 +45,7 @@ const config: Linter.Config = {
     "html",
     "markdown",
     "@html-eslint",
+    "json",
   ],
   settings: {
     react: {
