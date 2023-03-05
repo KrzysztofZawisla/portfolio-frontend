@@ -20,6 +20,11 @@ const config: Linter.Config = {
     "plugin:node/recommended",
     "plugin:markdown/recommended",
     "plugin:json/recommended",
+    "plugin:yml/recommended",
+    "plugin:toml/recommended",
+    "plugin:lodash/recommended",
+    "plugin:xss/recommended",
+    "plugin:no-unsanitized/DOM",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -46,6 +51,12 @@ const config: Linter.Config = {
     "markdown",
     "@html-eslint",
     "json",
+    "yml",
+    "toml",
+    "lodash",
+    "xss",
+    "no-loops",
+    "no-unsanitized",
   ],
   settings: {
     react: {
@@ -53,6 +64,8 @@ const config: Linter.Config = {
     },
   },
   rules: {
+    "no-loops/no-loops": "error",
+    "lodash/prefer-lodash-method": "off",
     "prettier/prettier": [
       "error",
       {
@@ -93,6 +106,10 @@ const config: Linter.Config = {
   },
   overrides: [
     {
+      files: ["*.yaml", "*.yml"],
+      parser: "yaml-eslint-parser",
+    },
+    {
       files: ["*.json", "*.js"],
       parserOptions: {
         project: null,
@@ -117,6 +134,10 @@ const config: Linter.Config = {
       files: ["*.html", "*.htm"],
       parser: "@html-eslint/parser",
       extends: ["plugin:@html-eslint/recommended"],
+    },
+    {
+      files: ["*.toml"],
+      parser: "toml-eslint-parser",
     },
   ],
 };
